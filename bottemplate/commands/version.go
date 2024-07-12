@@ -3,7 +3,8 @@ package commands
 import (
 	"fmt"
 
-	"github.com/disgoorg/bot-template/bottemplate"
+	"clockey/bottemplate"
+
 	"github.com/disgoorg/disgo/discord"
 	"github.com/disgoorg/disgo/handler"
 )

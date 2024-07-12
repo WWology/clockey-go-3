@@ -1,7 +1,8 @@
 package handlers
 
 import (
-	"github.com/disgoorg/bot-template/bottemplate"
+	"clockey/bottemplate"
+
 	"github.com/disgoorg/disgo/bot"
 	"github.com/disgoorg/disgo/events"
 )

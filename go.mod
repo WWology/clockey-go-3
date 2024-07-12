@@ -1,4 +1,4 @@
-module github.com/disgoorg/bot-template
+module clockey
 
 go 1.22
 
