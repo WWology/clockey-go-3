@@ -1,8 +1,15 @@
 package commands
 
-import "github.com/disgoorg/disgo/discord"
+import (
+	"clockey/bottemplate/commands/signup"
+
+	"github.com/disgoorg/disgo/discord"
+)
 
 var Commands = []discord.ApplicationCommandCreate{
-	test,
+	// General Purpose Commands
 	version,
+
+	// Signup commands
+	signup.EventCommand,
 }

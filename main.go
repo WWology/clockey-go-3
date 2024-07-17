@@ -11,15 +11,15 @@ import (
 
 	"clockey/bottemplate"
 	"clockey/bottemplate/commands"
-	"clockey/bottemplate/components"
-	"clockey/bottemplate/handlers"
+	"clockey/bottemplate/commands/signup"
 
 	"github.com/disgoorg/disgo/bot"
 	"github.com/disgoorg/disgo/handler"
+	"github.com/disgoorg/disgo/handler/middleware"
 )
 
 var (
-	version = "dev"
+	version = "0.02"
 	commit  = "unknown"
 )
 
@@ -41,12 +41,11 @@ func main() {
 	b := bottemplate.New(*cfg, version, commit)
 
 	h := handler.New()
-	h.Command("/test", commands.TestHandler)
-	h.Autocomplete("/test", commands.TestAutocompleteHandler)
+	h.Use(middleware.Go)
 	h.Command("/version", commands.VersionHandler(b))
-	h.Component("/test-button", components.TestComponent)
+	h.SlashCommand("/event", signup.EventCommandHandler)
 
-	if err = b.SetupBot(h, bot.NewListenerFunc(b.OnReady), handlers.MessageHandler(b)); err != nil {
+	if err = b.SetupBot(h, bot.NewListenerFunc(b.OnReady)); err != nil {
 		slog.Error("Failed to setup bot", slog.Any("err", err))
 		os.Exit(-1)
 	}
